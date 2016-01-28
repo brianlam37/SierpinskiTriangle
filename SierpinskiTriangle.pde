@@ -10,23 +10,18 @@ public void draw()
 {
 	background(255,255,255);
 	sierpinski(serX,serY,serLen);
-	mouseWheel();
 }	
+public void mousePressed()//optional
+{
+	if(mouseButton==LEFT){
+		serLen=serLen+4;
 
+	}
+	if(mouseButton==RIGHT){
+		serLen=serLen-4;
 
-public void mouseWheel(MouseEvent event) {
-  int e = event.getCount();
-  int nE=-e;
-  if(nE==1){
-  	serLen+=4;
-  }
-  
-  if(nE==-1){
-  	serLen-=4;
-  }
+	}
 }
-
-
 
 public void mouseDragged()//optional
 {
@@ -48,7 +43,6 @@ public void mouseDragged()//optional
  	}else{
  		sierpinski(x,y,len-1);
  	}
-
  }*/
 public void sierpinski(int x, int y, int len)
  {
