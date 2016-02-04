@@ -1,6 +1,7 @@
 int serLen=100;
 int serX=400;
 int serY=400;
+boolean up,down,right,left,grow,shrink;
 
 public void setup()
 {
@@ -10,40 +11,34 @@ public void draw()
 {
 	background(255,255,255);
 	sierpinski(serX,serY,serLen);
+	move();
 }	
-public void mousePressed()//optional
+public void move()//optional
 {
-	if(mouseButton==LEFT){
-		serLen=serLen+4;
-
-	}
-	if(mouseButton==RIGHT){
+	if(shrink==true){
 		serLen=serLen-4;
 
 	}
+	if(grow==true){
+		serLen=serLen+4;
+
+	}
+	if(up==true){
+		serY-=4;
+	}
+	if(down==true){
+		serY+=4;
+	}
+	if(left==true){
+		serX-=4;
+	}
+	if(right==true){
+		serX+=4;
+	}
+
 }
 
-public void mouseDragged()//optional
-{
 
-
-	serX=mouseX-serLen/2;
-	serY=mouseY+serLen/2;
-
-}
-
-/*public void sierpinski(int x, int y, int len)
- {
- 	if(len>=20)
- 	{
- 		fill(0,0,0);
- 	triangle(x,y,x+len/2,y,x+len/4,y-len/2);
- 	triangle(x+len/2,y,x+len,y,x+3*len/4,y-len/2);
- 	triangle(x+len/4,y-len/2,x+3*len/4,y-len/2,x+len/2,y-len);
- 	}else{
- 		sierpinski(x,y,len-1);
- 	}
- }*/
 public void sierpinski(int x, int y, int len)
  {
 
@@ -69,3 +64,43 @@ public void sierpinski(int x, int y, int len)
  	}
 
  }
+public void keyPressed(){
+if(key=='s'){
+	down=true;
+}
+if(key=='w'){
+	up=true;
+}
+if(key=='a'){
+	left=true;
+}
+if(key=='d'){
+	right=true;
+}
+if(keyCode==UP){
+	grow=true;
+}
+if(keyCode==DOWN){
+	shrink=true;
+}
+}
+public void keyReleased(){
+if(key=='s'){
+	down=false;
+}
+if(key=='w'){
+	up=false;
+}
+if(key=='a'){
+	left=false;
+}
+if(key=='d'){
+	right=false;
+}
+if(keyCode==UP){
+	grow=false;
+}
+if(keyCode==DOWN){
+	shrink=false;
+}
+}
